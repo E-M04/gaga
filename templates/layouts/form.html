@@ -1,5 +1,21 @@
-<form method="post" action="" enctype="multipart/form-data">
-    {{form}}
-    <button type="submit">{{title}}</button>
+{%extends 'layouts/base.html'%}
+{% load crispy_forms_tags %}
+{%block content%}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            {{title}}
 
-</form>
+        </div>
+        <div class="card-body">
+            <form method="post" action="" enctype="multipart/form-data" >
+            {%csrf_token%}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">{{title}}</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
