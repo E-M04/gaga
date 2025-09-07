@@ -38,3 +38,7 @@ class LoginForm(forms.Form):
     password=forms.CharField(max_length=50,widget=forms.PasswordInput,label=_('Parol'),required=True)
 
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','username','email','photo']

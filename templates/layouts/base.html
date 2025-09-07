@@ -1,4 +1,5 @@
 {%load static%}
+{% load crispy_forms_filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,21 +18,33 @@
 
     <!-- Left side menu -->
     {%if user.is_authenticated%}
-        <ul class="navbar-nav me-auto"> 
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{%url 'client:logout'%}">Chiqish</a>
-            </li> 
-        </ul>
-    {%else%}
       <ul class="navbar-nav me-auto"> 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{%url 'client:login'%}">Tizimga kirish </a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{%url 'client:registration'%}">Ro'yxatdan o'tish</a>
-          </li> 
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          
+                    <img src="{{ request.user.profile.photo.url }}" alt="Profile Photo" />
+                      
+
+
+             
+
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{%url 'client:profile'%}">Profile</a>
+              <a class="dropdown-item" href="{%url 'client:logout'%}">Chiqish</a>
+            </div>
+        </li>
+          {%else%}
+          <ul class="navbar-nav me-auto"> 
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{%url 'client:login'%}">Tizimga kirish </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{%url 'client:registration'%}">Ro'yxatdan o'tish</a>
+              </li> 
+          </ul>
       </ul>
-     {%endif%}
+    {%endif%}
   </div>
 </nav>
 

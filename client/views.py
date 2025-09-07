@@ -1,10 +1,12 @@
-from django.shortcuts import render,redirect
-from django.urls import is_valid_path
-from .forms import RegistrationForm,LoginForm
+from django.shortcuts import get_object_or_404, render,redirect
+from django.urls import is_valid_path, reverse
+from .forms import RegistrationForm,LoginForm,ProfileForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _ 
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .models import User
+
 
 
 
@@ -46,4 +48,26 @@ def client_logout(request):
     messages.success(request,'Xayr {}'.format(request.user.username))
     logout(request)
     return redirect('main:index')
+
+
+def profile_update(request):
+    profile=request.user
+
+    if request.method=='POST':
+        form=ProfileForm(data=request.POST,files=request.FILES,instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('client:profile')
+    else:
+        form=ProfileForm(instance=profile)
+
+    ctx={
+        'form':form,
+        'title':'Profile',
+        'button_title':'Chiqish'
+
+    }
+    return render(request,'layouts/form.html',ctx)
+
+
 
