@@ -7,7 +7,7 @@ from gag.helpers import UploadTo
 class Category(TranslateMixin,models.Model):
     translate_fields=['name']
     name_uz=models.CharField(max_length=50)
-    name_ru=models.CharField(max_length=50)
+    name_en=models.CharField(max_length=50)
     image=models.ImageField(upload_to=UploadTo('category'))
     def __str__(self):
         return self.name
