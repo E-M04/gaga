@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
 from .forms import  PostUpload
+from .models import  Post,Category
+
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 def index(request):
-    return render(request,'main/index.html',{})
+    list=Category.objects.all().order_by('-id')
+
+    return render(request,'main/index.html' ,{'list':list})
 
 
 def upload_post(request):
