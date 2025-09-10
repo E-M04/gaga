@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-08 09:56+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\client\forms.py:12
+msgid "Parollar takrorlang"
+msgstr ""
+
+#: .\client\forms.py:17
+msgid "Iltimos bir xil parol kiriting !"
+msgstr ""
+
+#: .\client\forms.py:25 .\client\forms.py:38
+msgid "Login"
+msgstr ""
+
+#: .\client\forms.py:26 .\client\forms.py:39
+msgid "Parol"
+msgstr ""
+
+#: .\client\forms.py:31
+msgid "Lotin harflari va sonlar bo'lishi lozim"
+msgstr "There must lotin latters and numbers "
+
+#: .\client\views.py:14 .\templates\layouts\base.html:41
+msgid "Ro'yxatdan o'tish"
+msgstr "Login out"
+
+#: .\client\views.py:21
+msgid "Siz muvaffiqiyatli ro'yxatdan o'tdingiz"
+msgstr "You loged successfully"
+
+#: .\client\views.py:28 .\templates\layouts\base.html:38
+msgid "Tizimga kirish"
+msgstr "Inter the site"
+
+#: .\client\views.py:35
+#, python-brace-format
+msgid "Xush kelibsiz,{}"
+msgstr "Welcome to you,{}"
+
+#: .\client\views.py:39
+msgid "Login xato "
+msgstr "Login error"
+
+#: .\gag\settings.py:154
+msgid "Uzbek"
+msgstr ""
+
+#: .\gag\settings.py:155
+msgid "English"
+msgstr ""
+
+#: .\templates\layouts\base.html:28
+msgid "Profile"
+msgstr ""
+
+#: .\templates\layouts\base.html:29
+msgid "Chiqish"
+msgstr "Exit"
+
+#: .\templates\layouts\base.html:65
+msgid ""
+"\n"
+"    "
+msgstr ""
+
+#: .\templates\main\index.html:4
+msgid ""
+"\n"
+"       Olma\n"
+"    "
+msgstr ""

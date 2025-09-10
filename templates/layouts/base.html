@@ -1,4 +1,5 @@
 {%load static%}
+{% load i18n %}
 {% load crispy_forms_filters %}
 <!DOCTYPE html>
 <html lang="en">
@@ -17,30 +18,45 @@
     <a class="navbar-brand" href="{%url 'main:index'%}">GAG</a>
 
     <!-- Left side menu -->
-    {%if user.is_authenticated%}
+    {%if user.is_authenticated %}
       <ul class="navbar-nav me-auto"> 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          
-                    <img src="{{ request.user.profile.photo.url }}" alt="Profile Photo" />
-                      
-
-
-             
-
+                <img src="{{request.user.image_url}}" alt="Profil rasmi" class="rounded-circle" width="50px">
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="{%url 'client:profile'%}">Profile</a>
-              <a class="dropdown-item" href="{%url 'client:logout'%}">Chiqish</a>
+              <a class="dropdown-item" href="{%url 'client:profile'%}">{% trans 'Profile'%}</a>
+              <a class="dropdown-item" href="{%url 'client:logout'%}">{% trans 'Chiqish'%}</a>
             </div>
         </li>
-          {%else%}
+          <li>
+
+               <a class="dropdown-item" href="{% url 'main:upload'%}">{% trans 'Yuklash'%}</a>
+          </li>
+          <li>
+
+             <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                 <div class="dropdown">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                      </a>
+                     <div class="dropdown-menu">
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" name="language" value="en">English</button><br><br>
+                            <button type="submit" name="language" value="uz">Uzbek</button>
+                     </div>
+                 </div>
+            </form>
+
+          </li>
+    {%else%}
           <ul class="navbar-nav me-auto"> 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{%url 'client:login'%}">Tizimga kirish </a>
+                <a class="nav-link active" aria-current="page" href="{%url 'client:login'%}">{% trans 'Tizimga kirish'%}</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{%url 'client:registration'%}">Ro'yxatdan o'tish</a>
+                <a class="nav-link active" aria-current="page" href="{%url 'client:registration'%}">{% trans "Ro'yxatdan o'tish"%}</a>
               </li> 
           </ul>
       </ul>
@@ -63,8 +79,9 @@
         {% endfor %}
     {% endif %}
     </div>
-    {% block content%}
-    {%endblock%}
+    {% block content%} {%endblock%}
+    {% blocktrans %}
+    {% endblocktrans %}
     <script src="{% static 'vendor/jquery-3.7.1.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
     <script src="{% static 'main/main.js'%}"></script>

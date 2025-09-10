@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import environ
 import os
+from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 env=environ.Env(
     DEBUG=(bool,False)
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'gag.urls'
@@ -146,3 +148,14 @@ INTERNAL_IPS = [
     "127.0.0.1"
 ]
 AUTH_USER_MODEL = "client.User"
+
+
+LANGUAGES = [
+    ('uz', _('Uzbek')),
+    ('en', _('English')),
+]
+
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]

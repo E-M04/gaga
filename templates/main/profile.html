@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">Profilni tahrirlash</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                {{ form.first_name|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ form.last_name|as_crispy_field }}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                {{ form.email|as_crispy_field }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form.photo|as_crispy_field }}
+                {% if request.client.image_url%}
+                    <img src="{{ request.user.image_url }}" alt="Profile Photo" 
+                         class="img-thumbnail mt-2" style="max-height: 150px;">
+                {% endif %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Saqlash</button>
+    </form>
+</div>
+
+ {% endblock %}

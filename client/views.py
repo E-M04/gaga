@@ -51,15 +51,15 @@ def client_logout(request):
 
 
 def profile_update(request):
-    profile=request.user
+
 
     if request.method=='POST':
-        form=ProfileForm(data=request.POST,files=request.FILES,instance=profile)
+        form=ProfileForm(data=request.POST,files=request.FILES,instance=request.user)
         if form.is_valid():
-            form.save()
+            form.save() 
             return redirect('client:profile')
     else:
-        form=ProfileForm(instance=profile)
+        form=ProfileForm(instance=request.user)
 
     ctx={
         'form':form,

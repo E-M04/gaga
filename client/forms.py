@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
+
 class RegistrationForm(forms.ModelForm):
     confirm=forms.CharField(max_length=50 ,widget=forms.PasswordInput,label=_('Parollar takrorlang'))
 
@@ -38,7 +39,14 @@ class LoginForm(forms.Form):
     password=forms.CharField(max_length=50,widget=forms.PasswordInput,label=_('Parol'),required=True)
 
 
+
+
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model=User
-        fields=['first_name','last_name','username','email','photo']
+        fields=('first_name','last_name','username','email','photo')
+        widgets = {
+            'photo': forms.FileInput(attrs={'class': 'form-control'})
+        }
+    
