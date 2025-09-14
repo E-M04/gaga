@@ -1,5 +1,6 @@
 .index{
   margin-left: 400px;
+
 }
 .img1{
   width:1200px;
@@ -10,4 +11,13 @@
 .img2{
   margin-left: 1200px;
   margin-top: 20px;
+}
+.category{
+  font-size: 30px;
+
+}
+
+
+h4{
+  margin-top: 10px;
 }

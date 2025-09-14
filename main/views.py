@@ -1,13 +1,27 @@
 from django.shortcuts import render,redirect
 from .forms import  PostUpload
 from .models import  Post,Category
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-def index(request):
-    list=Category.objects.all().order_by('-id')
 
-    return render(request,'main/index.html' ,{'list':list})
+
+def index(request):
+    post=Post.objects.all()
+    paginator=Paginator(Post.objects.all(),1)
+    page= request.GET.get('page')
+    posts=paginator.get_page(page)
+    nums='a'*posts.paginator.num_pages
+    ctx={
+        
+        'list':Category.objects.all().order_by('-id'),
+        'post':post,
+        'posts':posts,
+        'nums':nums
+        
+         }
+
+    return render(request,'main/index.html' ,ctx)
 
 
 def upload_post(request):

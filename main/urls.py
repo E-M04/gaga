@@ -5,6 +5,7 @@ app_name='main'
 
 urlpatterns = [
     path('',index,name='index'),
-    path('upload/',upload_post,name='upload')
+    path('upload/',upload_post,name='upload'),
+    path('cat/<int:id>',upload_post,name='cat')
 ]
 
