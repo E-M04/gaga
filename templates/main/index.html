@@ -20,8 +20,11 @@
     <ul class="list-group list-group-flush">
             {%for p in posts %}
                 <li class="list-group-item">{{p.user}} -- {{p.category}}</li>
-                <li class="list-group-item"><img style="width: 300px; height: 300px;" src="{{ p.file.url }}"/><a href="#" ></a></li>
-                <li  class="list-group-item"><a href="#">👍 {{ post.like }}</a> <a href="#">👎 {{ post.dislike }}</a><a href="#">💬 {{ post.comment }}</a></li>  
+                <li class="list-group-item"><img style="width:400px; height: 400px;" src="{{ p.file.url }}"/><a href="#" ></a></li>
+                <li  class="list-group-item">
+                    <a href="{% url 'main:post_like' p.id 'like'%}?return={{request.get_full_path}}">👍 {{ p.like }}</a> 
+                    <a href="{% url 'main:post_like'  p.id 'dislike'%}?return={{request.get_full_path}}">👎{{ p.dislike }}</a>
+                    <a href="#">💬{{ p.comment }}</a></li>  
             {%endfor%}
     
                 <!-- {{posts}}<br>

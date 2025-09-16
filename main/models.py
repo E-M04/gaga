@@ -24,6 +24,10 @@ class Post(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
 
 
+    def sum_likes(self):
+        return self.like.count()
+
+
     @property
     def ext(self):
         return(os.path.splitext(seelf.file.name)[1])[1:].lower()
