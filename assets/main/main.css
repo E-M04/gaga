@@ -6,16 +6,19 @@
   width:1200px;
   margin-left:300px;
   margin-top: -170px;
- 
 }
-.img2{
-  margin-left: 1200px;
-  margin-top: 20px;
-}
+
 .category{
   font-size: 30px;
 
 }
+
+.img2{
+  margin-right: 100px;
+  height: 100px;
+  width: 100px;
+}
+
 
 
 h4{
