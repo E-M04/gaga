@@ -36,7 +36,7 @@ def user_login(request):
 
                 return redirect('main:index')
             else:
-                form.add_error(_('Login xato '))
+                form.add_error(None,_('Login xato '))
 
     else:
         form=LoginForm()

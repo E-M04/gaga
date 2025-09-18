@@ -1,11 +1,11 @@
-{% extends 'layouts/base.html'%}
+{% extends 'layouts/banner.html'%}
 {%load static%}
 {% load i18n %}
-{% block content%}
+{% block banner_content%}
 <div class="index">
     <h4>KATEGORIYALAR</h4>
     <ul class="category">
-        {%for i in list %}
+        {%for i in categories  %}
             <li><img style="width: 20px; height: 20px;" src="{{ i.image.url }}"/><a href="#" > {{i.name}}</a></li>        
         {%endfor%}
     </ul>
@@ -16,48 +16,7 @@
 
     Paginations
 
-   
-    <ul class="list-group list-group-flush">
-            {%for p in posts %}
-                <li class="list-group-item">{{p.user}} -- {{p.category}}</li>
-                <li class="list-group-item"><img style="width:400px; height: 400px;" src="{{ p.file.url }}"/><a href="#" ></a></li>
-                <li  class="list-group-item">
-                    <a href="{% url 'main:post_like' p.id 'like'%}?return={{request.get_full_path}}">👍 {{ p.like }}</a> 
-                    <a href="{% url 'main:post_like'  p.id 'dislike'%}?return={{request.get_full_path}}">👎{{ p.dislike }}</a>
-                    <a href="#">💬{{ p.comment }}</a></li>  
-            {%endfor%}
-    
-                <!-- {{posts}}<br>
-                Has Previous: {{posts.has_previous}}<br>
-                Has Next:{{posts.has_next}}<br>
-                Current Page :{{posts.number}}<br>
-                Number of pages:{{posts.paginator.num_pages}}
-
-                <hr><br/><br/> -->
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-center">
-                    {%if posts.has_previous %}
-                        <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{posts.previous_page_number}}">Previous</a></li>
-                    {% endif %}
-                    
-                    <!-- <li class="page-item"><a class="page-link" href="#">Page {{posts.number}} of {{posts.paginator.num_pages}}</a></li> -->
-                    {% for i in nums %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{forloop.counter}}">
-                            {{forloop.counter}}
-                        </a> 
-                    </li>
-                         
-                    {% endfor %}
-                    {% if posts.has_next%}
-                      <li class="page-item"><a class="page-link" href="?page={{posts.next_page_number}}" >next</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{posts.paginator.num_pages}}" >last &raquo</a></ul>
-                    {% endif %}
-                  </ul>
-                </nav>
-            
-    </ul>
+   {%include 'widgets/post.html' with post=post %}
     
     <div style="margin-top: 400px;"></div>
 </div>

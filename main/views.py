@@ -9,13 +9,11 @@ from django.http import Http404
 
 def index(request):
     post=Post.objects.all()
-    paginator=Paginator(Post.objects.all(),1)
+    paginator=Paginator(Post.objects.all().order_by('-id'),1)
     page= request.GET.get('page')
     posts=paginator.get_page(page)
     nums='a'*posts.paginator.num_pages
     ctx={
-        
-        'list':Category.objects.all().order_by('-id'),
         'post':post,
         'posts':posts,
         'nums':nums
